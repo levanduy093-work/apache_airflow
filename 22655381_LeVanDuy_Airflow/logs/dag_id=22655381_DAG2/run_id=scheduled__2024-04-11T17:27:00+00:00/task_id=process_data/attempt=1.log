@@ -1,0 +1,32 @@
+[2024-04-11T17:28:02.394+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-11T17:28:02.500+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: 22655381_DAG2.process_data scheduled__2024-04-11T17:27:00+00:00 [queued]>
+[2024-04-11T17:28:02.505+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: 22655381_DAG2.process_data scheduled__2024-04-11T17:27:00+00:00 [queued]>
+[2024-04-11T17:28:02.505+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-11T17:28:02.511+0000] {taskinstance.py:2327} INFO - Executing <Task(PythonOperator): process_data> on 2024-04-11 17:27:00+00:00
+[2024-04-11T17:28:02.517+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=5237) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-11T17:28:02.518+0000] {standard_task_runner.py:63} INFO - Started process 5239 to run task
+[2024-04-11T17:28:02.517+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', '22655381_DAG2', 'process_data', 'scheduled__2024-04-11T17:27:00+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/dag_exercise.py', '--cfg-path', '/tmp/tmphiafmt2x']
+[2024-04-11T17:28:02.519+0000] {standard_task_runner.py:91} INFO - Job 133: Subtask process_data
+[2024-04-11T17:28:02.573+0000] {task_command.py:426} INFO - Running <TaskInstance: 22655381_DAG2.process_data scheduled__2024-04-11T17:27:00+00:00 [running]> on host 51938eebcb2b
+[2024-04-11T17:28:02.635+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Le Van Duy' AIRFLOW_CTX_DAG_ID='22655381_DAG2' AIRFLOW_CTX_TASK_ID='process_data' AIRFLOW_CTX_EXECUTION_DATE='2024-04-11T17:27:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-04-11T17:27:00+00:00'
+[2024-04-11T17:28:02.636+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-11T17:28:03.320+0000] {python.py:237} INFO - Done. Returned value was:        InvoiceNo StockCode  ... CustomerID         Country
+0         536365    85123A  ...    17850.0  United Kingdom
+1         536365     71053  ...    17850.0  United Kingdom
+2         536365    84406B  ...    17850.0  United Kingdom
+3         536365    84029G  ...    17850.0  United Kingdom
+4         536365    84029E  ...    17850.0  United Kingdom
+...          ...       ...  ...        ...             ...
+541904    581587     22613  ...    12680.0          France
+541905    581587     22899  ...    12680.0          France
+541906    581587     23254  ...    12680.0          France
+541907    581587     23255  ...    12680.0          France
+541908    581587     22138  ...    12680.0          France
+
+[406829 rows x 8 columns]
+[2024-04-11T17:28:03.334+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-11T17:28:04.573+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=22655381_DAG2, task_id=process_data, execution_date=20240411T172700, start_date=20240411T172802, end_date=20240411T172804
+[2024-04-11T17:28:04.626+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-04-11T17:28:04.646+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1296 AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+[2024-04-11T17:28:04.662+0000] {taskinstance.py:3482} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-11T17:28:04.666+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,23 @@
+[2024-04-11T15:34:10.135+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-11T15:34:10.143+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_gg_bigquery_v06.export_query_result_to_gcs scheduled__2024-04-09T17:00:00+00:00 [queued]>
+[2024-04-11T15:34:10.147+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_gg_bigquery_v06.export_query_result_to_gcs scheduled__2024-04-09T17:00:00+00:00 [queued]>
+[2024-04-11T15:34:10.147+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2024-04-11T15:34:10.152+0000] {taskinstance.py:2327} INFO - Executing <Task(BigQueryToGCSOperator): export_query_result_to_gcs> on 2024-04-09 17:00:00+00:00
+[2024-04-11T15:34:10.157+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=6527) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-11T15:34:10.157+0000] {standard_task_runner.py:63} INFO - Started process 6539 to run task
+[2024-04-11T15:34:10.157+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dag_with_gg_bigquery_v06', 'export_query_result_to_gcs', 'scheduled__2024-04-09T17:00:00+00:00', '--job-id', '49', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_gg_bigquery.py', '--cfg-path', '/tmp/tmp4yx11x3t']
+[2024-04-11T15:34:10.158+0000] {standard_task_runner.py:91} INFO - Job 49: Subtask export_query_result_to_gcs
+[2024-04-11T15:34:10.182+0000] {task_command.py:426} INFO - Running <TaskInstance: dag_with_gg_bigquery_v06.export_query_result_to_gcs scheduled__2024-04-09T17:00:00+00:00 [running]> on host a4f2bd86ee13
+[2024-04-11T15:34:10.221+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='duy' AIRFLOW_CTX_DAG_ID='dag_with_gg_bigquery_v06' AIRFLOW_CTX_TASK_ID='export_query_result_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2024-04-09T17:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-04-09T17:00:00+00:00'
+[2024-04-11T15:34:10.221+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-11T15:34:10.227+0000] {bigquery_to_gcs.py:200} INFO - Executing extract of retail.query_result into: ['gs://***_online_retail_lab7/result_query/query_result.csv']
+[2024-04-11T15:34:10.232+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-04-11T15:34:10.232+0000] {base.py:84} INFO - Using connection ID 'gcp' for task execution.
+[2024-04-11T15:34:10.273+0000] {bigquery.py:2328} INFO - Project is not included in source_project_dataset_table: retail.query_result; using project "***-projecct"
+[2024-04-11T15:34:10.273+0000] {bigquery_to_gcs.py:223} INFO - Executing: {'extract': {'sourceTable': {'projectId': '***-projecct', 'datasetId': 'retail', 'tableId': 'query_result'}, 'compression': 'NONE', 'destinationUris': ['gs://***_online_retail_lab7/result_query/query_result.csv'], 'destinationFormat': 'CSV', 'fieldDelimiter': ',', 'printHeader': True}}
+[2024-04-11T15:34:10.274+0000] {bigquery.py:1613} INFO - Inserting job ***_dag_with_gg_bigquery_v06_export_query_result_to_gcs_2024_04_09T17_00_00_00_00_609da5cf9be5cebf32b9fc0eac7c065c
+[2024-04-11T15:34:17.265+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-11T15:34:17.279+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=dag_with_gg_bigquery_v06, task_id=export_query_result_to_gcs, execution_date=20240409T170000, start_date=20240411T153410, end_date=20240411T153417
+[2024-04-11T15:34:17.334+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-04-11T15:34:17.353+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-11T15:34:17.354+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

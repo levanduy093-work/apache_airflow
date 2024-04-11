@@ -1,0 +1,74 @@
+[2024-04-11T15:44:14.348+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-11T15:44:14.356+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_gg_bigquery_v06.export_query_result_to_gcs scheduled__2024-04-09T17:00:00+00:00 [queued]>
+[2024-04-11T15:44:14.359+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_gg_bigquery_v06.export_query_result_to_gcs scheduled__2024-04-09T17:00:00+00:00 [queued]>
+[2024-04-11T15:44:14.359+0000] {taskinstance.py:2303} INFO - Starting attempt 3 of 4
+[2024-04-11T15:44:14.364+0000] {taskinstance.py:2327} INFO - Executing <Task(BigQueryToGCSOperator): export_query_result_to_gcs> on 2024-04-09 17:00:00+00:00
+[2024-04-11T15:44:14.369+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=7206) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-11T15:44:14.369+0000] {standard_task_runner.py:63} INFO - Started process 7208 to run task
+[2024-04-11T15:44:14.369+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dag_with_gg_bigquery_v06', 'export_query_result_to_gcs', 'scheduled__2024-04-09T17:00:00+00:00', '--job-id', '68', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_gg_bigquery.py', '--cfg-path', '/tmp/tmpjqvrt43q']
+[2024-04-11T15:44:14.370+0000] {standard_task_runner.py:91} INFO - Job 68: Subtask export_query_result_to_gcs
+[2024-04-11T15:44:14.394+0000] {task_command.py:426} INFO - Running <TaskInstance: dag_with_gg_bigquery_v06.export_query_result_to_gcs scheduled__2024-04-09T17:00:00+00:00 [running]> on host a4f2bd86ee13
+[2024-04-11T15:44:14.436+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='duy' AIRFLOW_CTX_DAG_ID='dag_with_gg_bigquery_v06' AIRFLOW_CTX_TASK_ID='export_query_result_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2024-04-09T17:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-04-09T17:00:00+00:00'
+[2024-04-11T15:44:14.437+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-11T15:44:14.444+0000] {bigquery_to_gcs.py:200} INFO - Executing extract of retail.query_result into: ['gs://***_online_retail_lab7/result_query/query_result.csv']
+[2024-04-11T15:44:14.448+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-04-11T15:44:14.449+0000] {base.py:84} INFO - Using connection ID 'gcp' for task execution.
+[2024-04-11T15:44:14.488+0000] {bigquery.py:2328} INFO - Project is not included in source_project_dataset_table: retail.query_result; using project "***-projecct"
+[2024-04-11T15:44:14.489+0000] {bigquery_to_gcs.py:223} INFO - Executing: {'extract': {'sourceTable': {'projectId': '***-projecct', 'datasetId': 'retail', 'tableId': 'query_result'}, 'compression': 'NONE', 'destinationUris': ['gs://***_online_retail_lab7/result_query/query_result.csv'], 'destinationFormat': 'CSV', 'fieldDelimiter': ',', 'printHeader': True}}
+[2024-04-11T15:44:14.490+0000] {bigquery.py:1613} INFO - Inserting job ***_dag_with_gg_bigquery_v06_export_query_result_to_gcs_2024_04_09T17_00_00_00_00_609da5cf9be5cebf32b9fc0eac7c065c
+[2024-04-11T15:44:15.966+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-11T15:44:15.997+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/bigquery_to_gcs.py", line 224, in execute
+    job: BigQueryJob | UnknownJob = self._submit_job(
+                                    ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/bigquery_to_gcs.py", line 189, in _submit_job
+    return hook.insert_job(
+           ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/common/hooks/base_google.py", line 485, in inner_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/hooks/bigquery.py", line 1619, in insert_job
+    job_api_repr.result(timeout=timeout, retry=retry)
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 968, in result
+    self._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 740, in _begin
+    api_response = client._call_api(
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/client.py", line 831, in _call_api
+    return call()
+           ^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 293, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 153, in retry_target
+    _retry_error_helper(
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 212, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 144, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Conflict: 409 POST https://bigquery.googleapis.com/bigquery/v2/projects/airflow-projecct/jobs?prettyPrint=false: Already Exists: Job airflow-projecct:US.airflow_dag_with_gg_bigquery_v06_export_query_result_to_gcs_2024_04_09T17_00_00_00_00_609da5cf9be5cebf32b9fc0eac7c065c
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/google/cloud/transfers/bigquery_to_gcs.py", line 240, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Job with id: ***_dag_with_gg_bigquery_v06_export_query_result_to_gcs_2024_04_09T17_00_00_00_00_609da5cf9be5cebf32b9fc0eac7c065c already exists and is in DONE state. If you want to force rerun it consider setting `force_rerun=True`.Or, if you want to reattach in this scenario add DONE to `reattach_states`
+[2024-04-11T15:44:16.012+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_with_gg_bigquery_v06, task_id=export_query_result_to_gcs, execution_date=20240409T170000, start_date=20240411T154414, end_date=20240411T154416
+[2024-04-11T15:44:16.023+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 68 for task export_query_result_to_gcs (Job with id: ***_dag_with_gg_bigquery_v06_export_query_result_to_gcs_2024_04_09T17_00_00_00_00_609da5cf9be5cebf32b9fc0eac7c065c already exists and is in DONE state. If you want to force rerun it consider setting `force_rerun=True`.Or, if you want to reattach in this scenario add DONE to `reattach_states`; 7208)
+[2024-04-11T15:44:16.053+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-04-11T15:44:16.072+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-04-11T15:44:16.074+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

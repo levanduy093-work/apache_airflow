@@ -1,0 +1,24 @@
+[2024-04-11T15:11:38.380+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-04-11T15:11:38.388+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_gg_bigquery_v04.load_csv_to_bigquery scheduled__2024-04-09T17:00:00+00:00 [queued]>
+[2024-04-11T15:11:38.391+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_gg_bigquery_v04.load_csv_to_bigquery scheduled__2024-04-09T17:00:00+00:00 [queued]>
+[2024-04-11T15:11:38.391+0000] {taskinstance.py:2303} INFO - Starting attempt 5 of 6
+[2024-04-11T15:11:38.396+0000] {taskinstance.py:2327} INFO - Executing <Task(GCSToBigQueryOperator): load_csv_to_bigquery> on 2024-04-09 17:00:00+00:00
+[2024-04-11T15:11:38.403+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=5011) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-04-11T15:11:38.402+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dag_with_gg_bigquery_v04', 'load_csv_to_bigquery', 'scheduled__2024-04-09T17:00:00+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/dag_with_gg_bigquery.py', '--cfg-path', '/tmp/tmpq3e9ermb']
+[2024-04-11T15:11:38.404+0000] {standard_task_runner.py:91} INFO - Job 32: Subtask load_csv_to_bigquery
+[2024-04-11T15:11:38.403+0000] {standard_task_runner.py:63} INFO - Started process 5013 to run task
+[2024-04-11T15:11:38.433+0000] {task_command.py:426} INFO - Running <TaskInstance: dag_with_gg_bigquery_v04.load_csv_to_bigquery scheduled__2024-04-09T17:00:00+00:00 [running]> on host a4f2bd86ee13
+[2024-04-11T15:11:38.472+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='duy' AIRFLOW_CTX_DAG_ID='dag_with_gg_bigquery_v04' AIRFLOW_CTX_TASK_ID='load_csv_to_bigquery' AIRFLOW_CTX_EXECUTION_DATE='2024-04-09T17:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='5' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-04-09T17:00:00+00:00'
+[2024-04-11T15:11:38.473+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-04-11T15:11:38.485+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-04-11T15:11:38.486+0000] {base.py:84} INFO - Using connection ID 'gcp' for task execution.
+[2024-04-11T15:11:38.486+0000] {gcs_to_bigquery.py:379} INFO - Using existing BigQuery table for storing data...
+[2024-04-11T15:11:38.524+0000] {bigquery.py:2328} INFO - Project is not included in destination_project_dataset_table: retail.online_retail; using project "***-projecct"
+[2024-04-11T15:11:38.524+0000] {gcs_to_bigquery.py:383} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': '***-projecct', 'datasetId': 'retail', 'tableId': 'online_retail'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://***_online_retail_lab7/raw/online_retail.csv'], 'writeDisposition': 'WRITE_EMPTY', 'ignoreUnknownValues': False, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2024-04-11T15:11:38.524+0000] {bigquery.py:1613} INFO - Inserting job ***_dag_with_gg_bigquery_v04_load_csv_to_bigquery_2024_04_09T17_00_00_00_00_87746bfe7b656752be33194ccd9993f6
+[2024-04-11T15:12:16.048+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-04-11T15:12:16.083+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=dag_with_gg_bigquery_v04, task_id=load_csv_to_bigquery, execution_date=20240409T170000, start_date=20240411T151138, end_date=20240411T151216
+[2024-04-11T15:12:16.135+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-04-11T15:12:16.151+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1296 AirflowProviderDeprecationWarning: Call to deprecated class BigQueryExecuteQueryOperator. (This operator is deprecated. Please use `BigQueryInsertJobOperator`.)
+[2024-04-11T15:12:16.165+0000] {taskinstance.py:3482} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-04-11T15:12:16.166+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
